@@ -133,6 +133,7 @@ class Game:
                     return False
         elif direction[1] == -1:
             for block in range(piece.width):
+                print(f'checking ({piece.x + block}, {piece.y - 1})')
                 if self.board[piece.x + block][piece.y - 1]:
                     return False
         return True
@@ -141,9 +142,11 @@ class Game:
         piece = self.selection
         for x in range(piece.width):
             for y in range(piece.height):
-                print(f'({piece.x + x}, {piece.y + y})')
                 self.board[x + piece.x][y + piece.y] = False
+        for x in range(piece.width):
+            for y in range(piece.height):
                 self.board[x + piece.x + direction[0]][y + piece.y + direction[1]] = True
+
 
 # Press the green button in the gutter to run the script.
 if __name__ == '__main__':
